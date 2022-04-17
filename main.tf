@@ -73,7 +73,7 @@ resource "aws_instance" "webserver" {
     type        = "ssh"
     host        = self.public_ip
     user        = "ubuntu"
-    private_key = file("/Users/alaonr/Projects/githubs/Sapienttest/Terraform/aws_key/aws_keys")
+    private_key = file("./aws_key/aws_keys")
     timeout     = "4m"
   }
 
