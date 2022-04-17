@@ -13,18 +13,17 @@ pipeline {
   stages {
     stage('Terraform Init') {
       steps {
-        sh "${env.TERRAFORM_HOME}/terraform init -input=false"
+        sh label: '', script: 'terraform init'
       }
     }
     stage('Terraform Plan') {
       steps {
-        sh "${env.TERRAFORM_HOME}/terraform plan -out=tfplan -input=false -var-file='variables.tf'"
+        sh label: '', script: 'terraform plan -out=tfplan -input=false -var-file='variables.tf'
       }
     }
     stage('Terraform Apply') {
       steps {
-        input 'Apply Plan'
-        sh "${env.TERRAFORM_HOME}/terraform apply -input=false tfplan"
+        sh label: '', script: 'terraform apply --auto-approve -input=false'
       }
     }
     stage('AWSpec Tests') {
