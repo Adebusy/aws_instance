@@ -18,12 +18,12 @@ pipeline {
     }
     stage('Terraform Plan') {
       steps {
-        sh label: '', script: 'terraform plan -out=tfplan -input=false -var-file='variables.tf'
+        sh label: '', script: 'terraform plan -var-file='variables.tf''
       }
     }
     stage('Terraform Apply') {
       steps {
-        sh label: '', script: 'terraform apply --auto-approve -input=false'
+        sh label: '', script: 'terraform apply --auto-approve'
       }
     }
     stage('AWSpec Tests') {
