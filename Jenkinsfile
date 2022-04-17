@@ -1,4 +1,5 @@
 pipeline {
+  agent any
   parameters {
     password (name: 'AKIA27HSQY2ZD7TUH4U7')
     password (name: 'QQYClvI9WWMFxAlI7Co1LYNSp03wiYffxPeCFROM')
