@@ -18,22 +18,12 @@ pipeline {
     }
     stage('Terraform Plan') {
       steps {
-        sh label: '', script: 'terraform plan -var-file='variables.tf''
+        sh label: '', script: 'terraform plan'
       }
     }
     stage('Terraform Apply') {
       steps {
         sh label: '', script: 'terraform apply --auto-approve'
-      }
-    }
-    stage('AWSpec Tests') {
-      steps {
-          sh '''#!/bin/bash -l
-bundle install --path ~/.gem
-bundle exec rake spec || true
-'''
-
-        junit(allowEmptyResults: true, testResults: '**/testResults/*.xml')
       }
     }
   }
